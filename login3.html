@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login & Message Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #e9ecef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background: linear-gradient(145deg, #ffffff, #f0f0f0);
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 5px 5px 10px #d0d0d0, -5px -5px 10px #ffffff;
+            width: 100%;
+            max-width: 380px;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #495057;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .form-container label {
+            display: block;
+            color: #6c757d;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="password"],
+        .form-container textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: inset 3px 3px 6px #d1d9e6, inset -3px -3px 6px #ffffff;
+            font-size: 16px;
+            background-color: #f0f0f0;
+        }
+
+        .form-container textarea {
+            resize: none;
+        }
+
+        .form-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 3px 3px 6px #d0d0d0, -3px -3px 6px #ffffff;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>User Login</h2>
+        <form action="send_message.php" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <input type="submit" value="Send Message">
+        </form>
+    </div>
+</body>
+</html>
+
+
+
+
+"""
+
+php_content = """<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $username = htmlspecialchars($_POST['username']);
+    $password = htmlspecialchars($_POST['password']);
+    $message = htmlspecialchars($_POST['message']);
+
+    // Validate the username and password
+    $valid_user = "your_username";
+    $valid_pass = "your_password";
+
+    if ($username === $valid_user && $password === $valid_pass) {
+        $to = "your_email@example.com";
+        $subject = " -->
